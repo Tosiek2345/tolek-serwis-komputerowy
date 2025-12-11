@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOLEK Serwis Komputerowy – Bartoszyce</title>
+  <meta name="description" content="TOLEK Serwis Komputerowy – czyszczenie konsol, naprawa laptopów, składanie komputerów. Bartoszyce i okolice." />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
+    }
+
+    body {
+      background: #0f172a;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 0.75rem;
+      border: 2px solid #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      background: #38bdf8;
+      color: #020617;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding: 2rem 0 3rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #e0f2fe;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      margin-top: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 span {
+      color: #38bdf8;
+    }
+
+    .hero p {
+      color: #9ca3af;
+      max-width: 34rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      padding: 0.7rem 1.3rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #22c55e);
+      color: #020617;
+      border-color: transparent;
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.35);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: #4b5563;
+      color: #e5e7eb;
+    }
+
+    .btn-ghost:hover {
+      border-color: #9ca3af;
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .hero-card {
+      border-radius: 1.5rem;
+      border: 1px solid #1f2937;
+      background: radial-gradient(
+          circle at top left,
+          rgba(56, 189, 248, 0.12),
+          transparent 55%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          rgba(34, 197, 94, 0.08),
+          transparent 55%
+        ),
+        #020617;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
+      padding: 1.5rem;
+    }
+
+    .hero-card-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #9ca3af;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-card-main {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.75);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .section-sub {
+      font-size: 0.95rem;
+      color: #9ca3af;
+      margin-bottom: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      border-radius: 1.2rem;
+      border: 1px solid #1f2937;
+      background: #020617;
+      padding: 1.2rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.88rem;
+      color: #9ca3af;
+      margin-bottom: 0.5rem;
+    }
+
+    .card ul {
+      padding-left: 1rem;
+      font-size: 0.85rem;
+      color: #9ca3af;
+    }
+
+    .card ul li {
+      margin-bottom: 0.2rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .price {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #22c55e;
+      margin-bottom: 0.25rem;
+    }
+
+    .price-note {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: 1.5rem;
+      border-radius: 1.5rem;
+      border: 1px solid #1f2937;
+      background: radial-gradient(
+          circle at top right,
+          rgba(56, 189, 248, 0.18),
+          transparent 58%
+        ),
+        #020617;
+      padding: 1.5rem;
+    }
+
+    .contact-box h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-detail {
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-detail span {
+      color: #9ca3af;
+      font-size: 0.82rem;
+      display: block;
+    }
+
+    .contact-hint {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 0.7rem;
+    }
+
+    .footer {
+      border-top: 1px solid #1f2937;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6b7280;
+      background: #020617;
+    }
+
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .grid-3,
+      .pricing-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact-box {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      main {
+        padding-top: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <div class="logo-icon">TS</div>
+        <div>
+          <div>TOLEK</div>
+          <div style="font-size: 0.75rem; color: #9ca3af;">Serwis Komputerowy</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#uslugi">Usługi</a>
+        <a href="#cennik">Cennik</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="badge">
+          🔧 Serwis komputerów i konsol · Bartoszyce
+        </div>
+        <h1>
+          Szybki i solidny <span>serwis komputerowy</span>
+          dla Bartoszyc i okolic
+        </h1>
+        <p>
+          Czyszczenie konsol, wymiana pasty, naprawa laptopów, składanie komputerów,
+          instalacja Windows. Tanie usługi, jasny cennik i konkretne podejście – sprzęt
+          wraca do Ciebie w lepszej formie.
+        </p>
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn-primary">Umów naprawę</a>
+          <a href="#cennik" class="btn-ghost">Zobacz cennik</a>
+        </div>
+        <div class="hero-meta">
+          <span>🕒 Pon–pt: Bartoszyce · Weekendy: okolice</span>
+          <span>💬 Kontakt przez Facebook / Messenger</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-title">Najczęstsze zlecenia</div>
+        <div class="hero-card-main">PS4/PS5, laptopy, składanie PC</div>
+
+        <div class="hero-pill-row">
+          <span class="pill">Czyszczenie konsol</span>
+          <span class="pill">Wymiana pasty termicznej</span>
+          <span class="pill">Instalacja Windows</span>
+          <span class="pill">Składanie zestawu</span>
+        </div>
+
+        <p class="hero-note">
+          Sprzęt możesz zostawić w Bartoszycach od poniedziałku do piątku,
+          a w weekendy w mojej miejscowości. Napisz wiadomość, a ustalimy szczegóły.
+        </p>
+      </aside>
+    </section>
+
+    <section id="uslugi">
+      <h2 class="section-title">Usługi serwisowe</h2>
+      <p class="section-sub">
+        Poniżej lista najczęściej wykonywanych usług. Jeśli potrzebujesz czegoś innego –
+        napisz, postaram się pomóc lub doradzić.
+      </p>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Konsole – PS4 / PS5 / Xbox</h3>
+          <p>
+            Głośna konsola, przegrzewanie, wyłączanie w trakcie gry? Najczęściej to
+            kurz i stara pasta termiczna.
+          </p>
+          <ul>
+            <li>pełne czyszczenie wnętrza</li>
+            <li>wymiana pasty termicznej</li>
+            <li>wymiana termopadów (jeśli potrzeba)</li>
+            <li>kontrola temperatur</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Laptopy i komputery PC</h3>
+          <p>
+            Wolno działający sprzęt, wysokie temperatury, hałas wentylatorów – to da się
+            naprawić bez wymiany całego komputera.
+          </p>
+          <ul>
+            <li>czyszczenie układu chłodzenia</li>
+            <li>wymiana pasty na CPU/GPU</li>
+            <li>dołożenie RAM / dysku SSD</li>
+            <li>składanie nowych zestawów</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Oprogramowanie i system</h3>
+          <p>
+            Pomoc z systemem Windows i podstawową konfiguracją komputera.
+          </p>
+          <ul>
+            <li>instalacja i konfiguracja Windows</li>
+            <li>aktualizacje sterowników</li>
+            <li>podstawowa diagnostyka</li>
+            <li>przyspieszenie działania systemu</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="cennik">
+      <h2 class="section-title">Przykładowy cennik</h2>
+      <p class="section-sub">
+        Ceny orientacyjne – dokładną wycenę podaję po krótkim opisie usterki.
+        Dla kilku usług naraz możliwy rabat.
+      </p>
+
+      <div class="pricing-grid">
+        <article class="card">
+          <h3>Konsole</h3>
+          <p class="price">od 80–120 zł</p>
+          <p class="price-note">w zależności od modelu</p>
+          <ul>
+            <li>czyszczenie PS4 / PS5 / Xbox</li>
+            <li>wymiana pasty termicznej</li>
+            <li>kontrola temperatur po serwisie</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Laptopy / PC</h3>
+          <p class="price">od 70–150 zł</p>
+          <p class="price-note">zależnie od zakresu prac</p>
+          <ul>
+            <li>czyszczenie i konserwacja chłodzenia</li>
+            <li>wymiana pasty, termopadów</li>
+            <li>montaż RAM / SSD</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>System i konfiguracja</h3>
+          <p class="price">od 60–120 zł</p>
+          <p class="price-note">ustalane indywidualnie</p>
+          <ul>
+            <li>instalacja Windows</li>
+            <li>podstawowa konfiguracja</li>
+            <li>instalacja sterowników</li>
+            <li>proste przyspieszenie systemu</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <h2 class="section-title">Kontakt i lokalizacja</h2>
+      <p class="section-sub">
+        Najszybciej odpowiadam na wiadomości przez Facebooka. Po kontakcie ustalimy
+        dokładny termin i miejsce odbioru sprzętu.
+      </p>
+
+      <div class="contact-box">
+        <div>
+          <h3>Jak się skontaktować?</h3>
+          <p class="contact-detail">
+            Facebook / Messenger
+            <span>Wyszukaj: „TOLEK Serwis Komputerowy”</span>
+          </p>
+          <p class="contact-detail">
+            Godziny kontaktu
+            <span>pon–pt: po szkole / popołudniu · weekend: do ustalenia</span>
+          </p>
+          <p class="contact-hint">
+            Napisz, jaki masz sprzęt (model konsoli / laptopa / PC) i krótko opisz
+            problem. Odpowiem z przybliżoną ceną i terminem.
+          </p>
+        </div>
+
+        <div>
+          <h3>Gdzie działam?</h3>
+          <p class="contact-detail">
+            Bartoszyce
+            <span>od poniedziałku do piątku – możliwość zostawienia sprzętu</span>
+          </p>
+          <p class="contact-detail">
+            Okoliczna miejscowość
+            <span>weekendy – szczegóły ustalimy indywidualnie</span>
+          </p>
+          <p class="contact-hint">
+            Dokładny adres podaję w wiadomości prywatnej dla bezpieczeństwa.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © <span id="year"></span> TOLEK Serwis Komputerowy · Strona informacyjna
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
